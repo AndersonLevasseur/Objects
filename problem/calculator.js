@@ -1,3 +1,4 @@
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS
 class Calculator {
 	constructor() {
 		this.currentValue = 0;
@@ -9,7 +10,16 @@ class Calculator {
 
 	// Adds the value in the parameter to the currentValue
 
-	add(/*Fill in the needed parameter here*/) {
+	add(number) {
+		if (typeof (number) != 'number') {
+			return console.error('Not a valid Imput');
+		} else {
+			let oldValue = this.currentValue;
+			this.currentValue += number;
+			let equation = oldValue + ' + ' + number + ' = ' + this.currentValue;
+			this.history.push(equation);
+			return console.log(this.currentValue);
+		}
 		//if the parameter isn't a number, throw an error
 		//add the parameter to the currentValue
 		//add a row to the history array describing the operation in the format "oldValue + valueToAdd = result"
@@ -17,29 +27,77 @@ class Calculator {
 	}
 	
 	//subtracts the value in the parameter from the current value
-	subtract() {
-		//fill me in
+	subtract(number) {
+		if (typeof (number) != 'number') {
+			return console.error('Not a valid Imput');
+		} else {
+			let oldValue = this.currentValue;
+			this.currentValue -= number;
+			let equation = oldValue + ' - ' + number + ' = ' + this.currentValue;
+			this.history.push(equation);
+			return console.log(this.currentValue);
+		}
 	}
 	
-	multiplyBy() {
-		//fill me in
+	multiplyBy(number) {
+		if (typeof (number) != 'number') {
+			return console.error('Not a valid Imput');
+		} else {
+			let oldValue = this.currentValue;
+			this.currentValue *= number;
+			let equation = oldValue + ' x ' + number + ' = ' + this.currentValue;
+			this.history.push(equation);
+			return console.log(this.currentValue);
+		}
 	}
+
 	
-	divideBy() {
-		//fill me in
+	divideBy(number) {	
+		if (typeof (number) != 'number') {
+		return console.error('Not a valid Imput');
+	} else {
+		let oldValue = this.currentValue;
+		this.currentValue /= number;
+		let equation = oldValue + '/' + number + ' = ' + this.currentValue;
+		this.history.push(equation);
+		return console.log(this.currentValue);
+		}
 	}
 	
 	//returns the current value stored in the calculator
 	getValue() {
-		//fill me in
+		return console.log(this.currentValue);
 	}
 	
+	setCurrentValue(number) {
+		if (typeof (number) != 'number') {
+			return console.error('Not a valid Imput');
+		} else {
+			this.currentValue = number;	
+		}
+	}
+	
+	clearValue() {
+		this.currentValue = 0;
+		this.history.push('Cleared');		
+	}	
 	//Create a clear method that resets the current value in the calculator to zero and stores that action in history
 	//fill me in
 	
+	clearHistory() {
+		this.history.splice(0,this.history.length);
+		this.history.push('History Cleared');
+	}
 	//Create a method to clear all the history from the history array
 	//fill me in
-	
+	getRecentHistory() {
+		let recentHistory = this.history.slice(this.history.length - 1,this.history.length);
+		if (this.history.length = 0) {
+			return console.error('No History')
+		} else {
+			return console.log(recentHistory);
+			}
+	}
 
 	//Create a method to get the most recent history item from the history array
 	//fill me in
@@ -49,7 +107,12 @@ class Calculator {
 	//built in array operations
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 	toString() {
-		//fill me in
+		let allHistory = this.history.slice(this.history[0]);
+		if (this.history.length = 0) {
+			console.error('No History');
+		} else {
+			console.log(allHistory);
+		}
 	}
 }
 module.exports = Calculator;
