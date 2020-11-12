@@ -12,13 +12,13 @@ class Calculator {
 
 	add(number) {
 		if (typeof (number) != 'number') {
-			return console.error('Not a valid Imput');
+			throw 'Not a valid Input';
 		} else {
 			let oldValue = this.currentValue;
 			this.currentValue += number;
 			let equation = oldValue + ' + ' + number + ' = ' + this.currentValue;
 			this.history.push(equation);
-			return console.log(this.currentValue);
+			return this.currentValue;
 		}
 		//if the parameter isn't a number, throw an error
 		//add the parameter to the currentValue
@@ -29,49 +29,49 @@ class Calculator {
 	//subtracts the value in the parameter from the current value
 	subtract(number) {
 		if (typeof (number) != 'number') {
-			return console.error('Not a valid Imput');
+			throw 'Not a valid Input';
 		} else {
 			let oldValue = this.currentValue;
 			this.currentValue -= number;
 			let equation = oldValue + ' - ' + number + ' = ' + this.currentValue;
 			this.history.push(equation);
-			return console.log(this.currentValue);
+			return this.currentValue;
 		}
 	}
 	
 	multiplyBy(number) {
 		if (typeof (number) != 'number') {
-			return console.error('Not a valid Imput');
+			throw 'Not a valid Input';
 		} else {
 			let oldValue = this.currentValue;
 			this.currentValue *= number;
 			let equation = oldValue + ' x ' + number + ' = ' + this.currentValue;
 			this.history.push(equation);
-			return console.log(this.currentValue);
+			return this.currentValue;
 		}
 	}
 
 	
 	divideBy(number) {	
-		if (typeof (number) != 'number') {
-		return console.error('Not a valid Imput');
+	if (typeof (number) != 'number') {
+		throw 'Not a valid Input';
 	} else {
 		let oldValue = this.currentValue;
 		this.currentValue /= number;
 		let equation = oldValue + '/' + number + ' = ' + this.currentValue;
 		this.history.push(equation);
-		return console.log(this.currentValue);
+		return this.currentValue;
 		}
 	}
 	
 	//returns the current value stored in the calculator
 	getValue() {
-		return console.log(this.currentValue);
+		return this.currentValue;
 	}
 	
 	setCurrentValue(number) {
 		if (typeof (number) != 'number') {
-			return console.error('Not a valid Imput');
+			throw 'Not a valid Input';
 		} else {
 			this.currentValue = number;	
 		}
@@ -84,18 +84,18 @@ class Calculator {
 	//Create a clear method that resets the current value in the calculator to zero and stores that action in history
 	//fill me in
 	
-	clearHistory() {
+	resetHistory() {
 		this.history.splice(0,this.history.length);
 		this.history.push('History Cleared');
 	}
 	//Create a method to clear all the history from the history array
 	//fill me in
-	getRecentHistory() {
-		let recentHistory = this.history.slice(this.history.length - 1,this.history.length);
+	getLastAction() {
+		let recentHistory = this.history.slice(this.history.length - 1, this.history.length);
 		if (this.history.length = 0) {
-			return console.error('No History')
+			throw 'No History';
 		} else {
-			return console.log(recentHistory);
+			return recentHistory;
 			}
 	}
 
@@ -107,12 +107,7 @@ class Calculator {
 	//built in array operations
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 	toString() {
-		let allHistory = this.history.slice(this.history[0]);
-		if (this.history.length = 0) {
-			console.error('No History');
-		} else {
-			console.log(allHistory);
-		}
+		return this.history.join('\n');
 	}
 }
 module.exports = Calculator;

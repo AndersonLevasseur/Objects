@@ -1,26 +1,16 @@
 const Calculator = require("./calculator");
 
 let calc = new Calculator();
-let hi 
-calc.getValue();
-calc.add(hi);
-calc.setCurrentValue(9);
-calc.getValue();
+let hi;
+calc.add(5);
+calc.subtract(100);
+calc.add(150);
+calc.multiplyBy(-5);
+calc.divideBy(.5);
+console.log(calc.toString());
+calc.resetHistory();
 console.log(' ');
-calc.add('Please dont work');
-calc.clearValue();
-calc.getValue();
-calc.add(9);
-calc.getRecentHistory();
-console.log('');
-
-calc.clearValue();
-calc.getRecentHistory();
-calc.toString();
-console.log('');
-calc.subtract(9);
-calc.multiplyBy(92);
-calc.divideBy(92);
-calc.getRecentHistory();
-calc.multiplyBy(12);
-calc.toString();
+calc.add(50);
+calc.add(100);
+console.log(calc.getLastAction());
+calc.add('p');
