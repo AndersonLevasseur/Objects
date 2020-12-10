@@ -91,12 +91,12 @@ class Calculator {
 	//Create a method to clear all the history from the history array
 	//fill me in
 	getLastAction() {
-		let recentHistory = this.history.slice(this.history.length - 1, this.history.length);
+		let recentHistory = this.history[this.history.length - 1];
 		if (this.history.length = 0) {
 			throw 'No History';
 		} else {
 			return recentHistory;
-			}
+		}
 	}
 
 	//Create a method to get the most recent history item from the history array
